@@ -119,7 +119,8 @@ const MovieDetailsPage = () => {
                 render={() => <MyComponent />}
               />
             ))}
-            <Route component={NotFound} />
+            {/* {state && <Route component={NotFound} />} */}
+            
           </Switch>
         </Suspense>
       </div>
