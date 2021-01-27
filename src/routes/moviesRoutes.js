@@ -7,7 +7,7 @@ const moviesRoutes = [
     exact: true,
     component: lazy(() =>
       import(
-        '../components/moviesList/cast/CastListItem' /* ebpackChunkName: 'Cast' */
+        '../components/moviesList/cast/Cast' /* ebpackChunkName: 'Cast' */
       ),
     ),
   },
@@ -17,7 +17,7 @@ const moviesRoutes = [
     exact: true,
     component: lazy(() =>
       import(
-        '../components/moviesList/reviews/ReviewsListItem' /* ebpackChunkName: 'Cast' */
+        '../components/moviesList/reviews/Reviews' /* ebpackChunkName: 'Cast' */
       ),
     ),
   },

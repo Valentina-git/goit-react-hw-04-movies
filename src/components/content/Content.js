@@ -8,6 +8,8 @@ const Content = () => {
   return (
     <Suspense fallback={<div>Loading ...</div>}>
       <Switch>
+        <Route path="/movies/:id" component={MovieDetailsPage} />
+
         {mainRoutes.map(({ path, exact, name, component: MyComponent }) => (
           <Route
             path={path}
@@ -16,7 +18,7 @@ const Content = () => {
             render={() => <MyComponent name={name} />}
           />
         ))}
-        <Route path="/movies/:id" component={MovieDetailsPage} />
+
         <Route component={NotFound} />
       </Switch>
     </Suspense>

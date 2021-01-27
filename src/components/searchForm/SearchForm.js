@@ -28,7 +28,9 @@ const SearchForm = ({ getMovies }) => {
             value={query}
           />
         </label>
-        <button className="searchFormBtn">Search</button>
+        <button className="searchFormBtn" type="submit">
+          Search
+        </button>
       </form>
     </StyledSearchForm>
   );

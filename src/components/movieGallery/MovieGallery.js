@@ -4,19 +4,18 @@ import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 import StyledMovieGallery from './StyledMovieGallery';
 
 const MovieGallery = ({ movies, page, query }) => {
-  const location = useLocation;
-  const match = useRouteMatch;
+  const location = useLocation();
+  const match = useRouteMatch();
 
   return (
     <StyledMovieGallery>
-      {/* <ul className="movieGallery">
+      <ul className="movieGallery">
         {movies.map(item => (
-          <li className="movieGalleryItem" key={item}>
-            
+          <li className="movieGalleryItem" key={item.id}>
             <Link
               className="movieGalleryLink"
               to={{
-                pathname: `${match.url}${item.id}`,
+                pathname: `${match.url}/${item.id}`,
                 state: {
                   from: location.pathname,
                   movieId: item.id,
@@ -41,7 +40,7 @@ const MovieGallery = ({ movies, page, query }) => {
             <p className="movieGalleryText">{item.release_date}</p>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </StyledMovieGallery>
   );
 };

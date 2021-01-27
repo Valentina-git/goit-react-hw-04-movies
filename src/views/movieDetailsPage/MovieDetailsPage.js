@@ -13,9 +13,9 @@ import MovieDetailsWrapper from './StyledMovieDetails';
 
 const MovieDetailsPage = () => {
   const [state, setState] = useState({});
-  const match = useRouteMatch;
-  const location = useLocation;
-  const history = useHistory;
+  const match = useRouteMatch();
+  const location = useLocation();
+  const history = useHistory();
 
   const getMovieDetails = async id => {
     const res = await fetchMovieDetails(id);
@@ -24,7 +24,7 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     getMovieDetails(history.location.state.movieId);
-  }, []);
+  }, [history]);
 
   const goBack = () => {
     history.push({

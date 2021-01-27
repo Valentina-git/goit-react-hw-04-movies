@@ -21,17 +21,6 @@ const mainRoutes = [
     ),
     renderLink: true,
   },
-  {
-    path: '/movies/:movieId',
-    name: 'Movies details',
-    exact: false,
-    component: lazy(() =>
-      import(
-        '../views/movieDetailsPage/MovieDetailsPage' /* webpackChunkName: 'MoviesPage' */
-      ),
-    ),
-    renderLink: false,
-  },
 ];
 
 export default mainRoutes;
