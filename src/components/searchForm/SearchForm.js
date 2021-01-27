@@ -16,10 +16,13 @@ const SearchForm = ({ getMovies }) => {
 
   return (
     <StyledSearchForm>
-      <form className="searchForm" onSubmit={onFormSubmit}>
+      <form className="SearchForm" onSubmit={onFormSubmit}>
+        <button type="submit" className="SearchForm-button">
+          <span className="SearchForm-button-label">Search</span>
+        </button>
         <label>
           <input
-            className="searchInput"
+            className="SearchForm-input"
             type="text"
             autoComplete="off"
             autoFocus
@@ -28,9 +31,6 @@ const SearchForm = ({ getMovies }) => {
             value={query}
           />
         </label>
-        <button className="searchFormBtn" type="submit">
-          Search
-        </button>
       </form>
     </StyledSearchForm>
   );

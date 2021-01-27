@@ -14,6 +14,7 @@ const InitialState = {
 
 const MoviesPage = () => {
   const [state, setState] = useState({ ...InitialState });
+  const [error, setError] = useState('');
 
   const history = useHistory();
   const location = useLocation();
@@ -22,6 +23,10 @@ const MoviesPage = () => {
     try {
       if (query === '') return;
       const res = await fetchSearchMovies(query, page);
+
+      if (!res.length) {
+        setError('!!!! Bad request !!!!');
+      }
 
       await setState(prev => ({
         ...prev,
@@ -39,17 +44,19 @@ const MoviesPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   location.state.query &&
-  //     getMovies(location.state.query, location.state.page).then(() =>
-  //       setState(prev => ({ ...prev, page: location.state.page })),
-  //     );
-  // }, [getMovies, location]);
+  useEffect(() => {
+    location.state &&
+      location.state.query &&
+      getMovies(location.state.query, location.state.page).then(() =>
+        setState(prev => ({ ...prev, page: location.state.page })),
+      );
+  }, [getMovies, location]);
 
   const { movies, page, query } = state;
 
   return (
     <>
+      {error && <h2>{error}</h2>}
       <SearchForm getMovies={getMovies} />
       <MovieGallery movies={movies} page={page} query={query} />
     </>

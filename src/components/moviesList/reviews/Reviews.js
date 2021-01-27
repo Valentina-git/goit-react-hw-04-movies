@@ -4,30 +4,32 @@ import { fetchMovieReviews } from '../../../services/tvApi';
 import ReviewsStyled from './StyledReviews';
 
 const Reviews = () => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState([]);
   const location = useLocation();
 
   const getMovieReview = async id => {
     const res = await fetchMovieReviews(id);
-    setState({ ...res });
+
+    setState([...res]);
   };
 
   useEffect(() => {
     getMovieReview(location.state.movieId);
   }, [location]);
 
-  const { results } = state;
-
   return (
     <ReviewsStyled>
       <ul className="list">
-        {results &&
-          results.map(item => (
+        {!!state.length ? (
+          state.map(item => (
             <li className="listItem" key={item.id}>
               <h3>{item.author}</h3>
               <p>{item.content}</p>
             </li>
-          ))}
+          ))
+        ) : (
+          <p>'Not info'</p>
+        )}
       </ul>
     </ReviewsStyled>
   );

@@ -13,7 +13,7 @@ const mainRoutes = [
   {
     path: '/movies',
     name: 'Movie ',
-    exact: false,
+    exact: true,
     component: lazy(() =>
       import(
         '../views/moviePage/MoviesPage' /* webpackChunkName: 'MoviesPage' */

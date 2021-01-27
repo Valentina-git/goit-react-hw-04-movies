@@ -10,9 +10,11 @@ import {
 import { fetchMovieDetails } from '../../services/tvApi';
 import moviesRoutes from '../../routes/moviesRoutes';
 import MovieDetailsWrapper from './StyledMovieDetails';
+import NotFound from '../notFound/NotFound';
 
 const MovieDetailsPage = () => {
   const [state, setState] = useState({});
+
   const match = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
@@ -117,6 +119,7 @@ const MovieDetailsPage = () => {
                 render={() => <MyComponent />}
               />
             ))}
+            <Route component={NotFound} />
           </Switch>
         </Suspense>
       </div>

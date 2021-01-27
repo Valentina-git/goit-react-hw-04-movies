@@ -5,17 +5,17 @@ axios.defaults.params = {
   api_key: `17287c6674d1b15c587a1bb0f4802156`,
 };
 
-export const fetchTrendingMovies = () => {
+export const fetchTrendingMovies = async () => {
   try {
-    return axios.get(`/trending/movie/day`).then(res => res.data.results);
+    return await axios.get(`/trending/movie/day`).then(res => res.data.results);
   } catch (error) {
     throw new Error(error);
   }
 };
 
-export const fetchSearchMovies = search => {
+export const fetchSearchMovies = async search => {
   try {
-    return axios
+    return await axios
       .get(`/search/movie?query=${search}`)
       .then(res => res.data.results);
   } catch (error) {
@@ -23,25 +23,29 @@ export const fetchSearchMovies = search => {
   }
 };
 
-export const fetchMovieDetails = movieId => {
+export const fetchMovieDetails = async movieId => {
   try {
-    return axios.get(`/movie/${movieId}`).then(res => res.data.results);
+    return await axios.get(`/movie/${movieId}`).then(res => res.data);
   } catch (error) {
     throw new Error(error);
   }
 };
 
-export const fetchMovieCredits = movieId => {
+export const fetchMovieCredits = async movieId => {
   try {
-    return axios.get(`/movie/${movieId}/credits`).then(res => res.data.results);
+    return await axios
+      .get(`/movie/${movieId}/credits`)
+      .then(res => res.data.cast);
   } catch (error) {
     throw new Error(error);
   }
 };
 
-export const fetchMovieReviews = movieId => {
+export const fetchMovieReviews = async movieId => {
   try {
-    return axios.get(`/movie/${movieId}/reviews`).then(res => res.data.results);
+    return await axios
+      .get(`/movie/${movieId}/reviews`)
+      .then(res => res.data.results);
   } catch (error) {
     throw new Error(error);
   }
